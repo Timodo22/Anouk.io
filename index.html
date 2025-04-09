@@ -4,10 +4,13 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <meta name="description" content="">
+        <meta name="description" content="Ontwerp studio Anouk!">
         <meta name="author" content="">
+        <meta name="theme-color" content=#81B29A;/>
+        <link rel="icon" type="image/x-icon" href="/images/logo.png">
 
         <title>Anouk's ontwerp studio</title>
+        
 
         <!-- CSS FILES -->                
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -137,6 +140,8 @@ Anouk's ontwerp studio
                 <div class="container">
                     <div class="row">
 
+                        <style></style>
+
                         <div class="col-lg-6 col-12 mb-5 mb-lg-0">
                             <h2 class="text-white">Welkom bij ontwerp studio anouk!</h2>
 
@@ -148,6 +153,106 @@ Anouk's ontwerp studio
                                     <b>Stijlvol</b>
                                 </span>
                             </h1>
+
+                            <style>
+                                .cd-words-wrapper {
+            display: inline-block;
+            position: relative;
+            text-align: left;
+        }
+        
+        .cd-words-wrapper b {
+            display: inline-block;
+            position: absolute;
+            white-space: nowrap;
+            left: 0;
+            top: 0;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .cd-words-wrapper b.is-visible {
+            position: relative;
+            opacity: 1;
+            animation: slide-in 0.5s;
+        }
+        
+        .cd-words-wrapper b.is-hidden {
+            opacity: 0;
+            animation: slide-out 0.5s;
+        }
+        
+        @keyframes slide-in {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            60% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+        
+        @keyframes slide-out {
+            0% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            60% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+        @media (max-width: 768px) {
+            h1 {
+                flex-direction: column;
+                align-items: center;
+                font-size: 2.5rem;
+            }
+            
+            .static-text {
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
+            
+            .cd-words-wrapper {
+                min-width: 100%;
+            }
+        }
+    </style>
+                            </style>
+                            <script>
+                                document.addEventListener('DOMContentLoaded', function() {
+                                    const words = document.querySelectorAll('.cd-words-wrapper b');
+                                    let currentWordIndex = 0;
+                                    const animationDelay = 2000; // 2 seconden per woord
+                                    
+                                    // Begin de rotatie
+                                    setTimeout(changeWord, animationDelay);
+                                    
+                                    function changeWord() {
+                                        // Huidige woord verbergen
+                                        words[currentWordIndex].classList.remove('is-visible');
+                                        words[currentWordIndex].classList.add('is-hidden');
+                                        
+                                        // Ga naar volgende woord
+                                        currentWordIndex = (currentWordIndex + 1) % words.length;
+                                        
+                                        // Volgende woord tonen
+                                        words[currentWordIndex].classList.remove('is-hidden');
+                                        words[currentWordIndex].classList.add('is-visible');
+                                        
+                                        // Herhaal het proces
+                                        setTimeout(changeWord, animationDelay);
+                                    }
+                                });
+                            </script>
 
                             <div class="custom-btn-group">
                                 <a href="#section_2" class="btn custom-btn smoothscroll me-3">Mijn verhaal</a>
