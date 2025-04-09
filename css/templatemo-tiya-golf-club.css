@@ -670,6 +670,13 @@ strong {
   margin-bottom: -100px;
 }
 
+@supports (-webkit-touch-callout: none) {
+  .cd-headline.rotate-1 .cd-words-wrapper {
+    transform: none !important;
+    /* Eventueel andere iOS-specifieke aanpassingen */
+  }
+}
+
 .hero-50 .container + svg {
   transform: rotate(180deg);
 }
