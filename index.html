@@ -6,7 +6,7 @@
 
         <meta name="description" content="Ontwerp studio Anouk!">
         <meta name="author" content="">
-        <meta name="theme-color" content="#81B29A">
+        <meta name="theme-color" content="#C3CFC3"> 
         <link rel="icon" type="image/x-icon" href="/images/logo.png">
 
         <title>Anouk's ontwerp studio</title>
@@ -142,56 +142,76 @@ Anouk's ontwerp studio
 
                         <style></style>
 
+                        <style>
+                            .word-animation {
+                                display: inline-block;
+                                opacity: 1;
+                                transition: opacity 1s ease-in-out;
+                                color: #936610;
+                                font-weight: bold;
+                            }
+                            
+                            .word-animation.fade-out {
+                                opacity: 0;
+                            }
+                            
+                            @media (max-width: 768px) {
+                                h1 {
+                                    font-size: 2.5rem;
+                                }
+                                
+                                /* Deze nieuwe stijl zorgt ervoor dat de woorden onder elkaar komen op mobiel */
+                                .mobile-break {
+                                    display: none;
+                                }
+                                
+                                @media (max-width: 768px) {
+                                    .mobile-break {
+                                        display: block;
+                                        height: 5px; /* kleine ruimte tussen regels */
+                                    }
+                                    
+                                    h1 span.first-part {
+                                        display: block;
+                                        margin-bottom: 5px;
+                                    }
+                                }
+                            }
+                        </style>
+                    </head>
+                    <body>
                         <div class="col-lg-6 col-12 mb-5 mb-lg-0">
                             <h2 class="text-white">Welkom bij ontwerp studio anouk!</h2>
                         
                             <h1 class="text-white mb-4 pb-2">
-                                <span>Anouk is </span>
+                                <span class="first-part">Anouk is</span>
+                                <span class="mobile-break"></span>
                                 <span class="word-animation" id="changing-word">Gedetailleerd</span>
                             </h1>
+                        </div>
                         
-                            <style>
-                                .word-animation {
-                                    display: inline-block;
-                                    opacity: 1;
-                                    transition: opacity 1s ease-in-out;
-                                    color: #936610;
-                                    font-weight: bold;
+                        <script>
+                            document.addEventListener('DOMContentLoaded', function() {
+                                const words = ["Gedetailleerd", "Creatief", "Stijlvol"];
+                                const changingWord = document.getElementById('changing-word');
+                                let currentIndex = 0;
+                                
+                                function changeWord() {
+                                    // Start fading out
+                                    changingWord.classList.add('fade-out');
+                                    
+                                    // After fade out, change text and fade in
+                                    setTimeout(function() {
+                                        currentIndex = (currentIndex + 1) % words.length;
+                                        changingWord.textContent = words[currentIndex];
+                                        changingWord.classList.remove('fade-out');
+                                    }, 1000); // Same as transition duration
                                 }
                                 
-                                .word-animation.fade-out {
-                                    opacity: 0;
-                                }
-                                
-                                @media (max-width: 768px) {
-                                    h1 {
-                                        font-size: 2.5rem;
-                                    }
-                                }
-                            </style>
-                            
-                            <script>
-                                document.addEventListener('DOMContentLoaded', function() {
-                                    const words = ["Gedetailleerd", "Creatief", "Stijlvol"];
-                                    const changingWord = document.getElementById('changing-word');
-                                    let currentIndex = 0;
-                                    
-                                    function changeWord() {
-                                        // Start fading out
-                                        changingWord.classList.add('fade-out');
-                                        
-                                        // After fade out, change text and fade in
-                                        setTimeout(function() {
-                                            currentIndex = (currentIndex + 1) % words.length;
-                                            changingWord.textContent = words[currentIndex];
-                                            changingWord.classList.remove('fade-out');
-                                        }, 1000); // Same as transition duration
-                                    }
-                                    
-                                    // Change word every 3 seconds
-                                    setInterval(changeWord, 3000);
-                                });
-                            </script>
+                                // Change word every 3 seconds
+                                setInterval(changeWord, 3000);
+                            });
+                        </script>
                         </div>
 
                             <div class="custom-btn-group">
