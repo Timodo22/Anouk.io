@@ -144,115 +144,55 @@ Anouk's ontwerp studio
 
                         <div class="col-lg-6 col-12 mb-5 mb-lg-0">
                             <h2 class="text-white">Welkom bij ontwerp studio anouk!</h2>
-
-                            <h1 class="cd-headline rotate-1 text-white mb-4 pb-2">
-                                <span>Anouk is</span>
-                                <span class="cd-words-wrapper">
-                                    <b class="is-visible">Gedetailleerd</b>
-                                    <b>Creatief</b>
-                                    <b>Stijlvol</b>
-                                </span>
+                        
+                            <h1 class="text-white mb-4 pb-2">
+                                <span>Anouk is </span>
+                                <span class="word-animation" id="changing-word">Gedetailleerd</span>
                             </h1>
-
+                        
                             <style>
-                                .cd-words-wrapper {
-            display: inline-block;
-            position: relative;
-            text-align: left;
-        }
-        
-        .cd-words-wrapper b {
-            display: inline-block;
-            position: absolute;
-            white-space: nowrap;
-            left: 0;
-            top: 0;
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-        
-        .cd-words-wrapper b.is-visible {
-            position: relative;
-            opacity: 1;
-            animation: slide-in 0.5s;
-        }
-        
-        .cd-words-wrapper b.is-hidden {
-            opacity: 0;
-            animation: slide-out 0.5s;
-        }
-        
-        @keyframes slide-in {
-            0% {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            60% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-            100% {
-                opacity: 1;
-            }
-        }
-        
-        @keyframes slide-out {
-            0% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-            60% {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            100% {
-                opacity: 0;
-            }
-        }
-        @media (max-width: 768px) {
-            h1 {
-                flex-direction: column;
-                align-items: center;
-                font-size: 2.5rem;
-            }
-            
-            .static-text {
-                margin-right: 0;
-                margin-bottom: 10px;
-            }
-            
-            .cd-words-wrapper {
-                min-width: 100%;
-            }
-        }
-    </style>
+                                .word-animation {
+                                    display: inline-block;
+                                    opacity: 1;
+                                    transition: opacity 1s ease-in-out;
+                                    color: #936610;
+                                    font-weight: bold;
+                                }
+                                
+                                .word-animation.fade-out {
+                                    opacity: 0;
+                                }
+                                
+                                @media (max-width: 768px) {
+                                    h1 {
+                                        font-size: 2.5rem;
+                                    }
+                                }
                             </style>
+                            
                             <script>
                                 document.addEventListener('DOMContentLoaded', function() {
-                                    const words = document.querySelectorAll('.cd-words-wrapper b');
-                                    let currentWordIndex = 0;
-                                    const animationDelay = 2000; // 2 seconden per woord
-                                    
-                                    // Begin de rotatie
-                                    setTimeout(changeWord, animationDelay);
+                                    const words = ["Gedetailleerd", "Creatief", "Stijlvol"];
+                                    const changingWord = document.getElementById('changing-word');
+                                    let currentIndex = 0;
                                     
                                     function changeWord() {
-                                        // Huidige woord verbergen
-                                        words[currentWordIndex].classList.remove('is-visible');
-                                        words[currentWordIndex].classList.add('is-hidden');
+                                        // Start fading out
+                                        changingWord.classList.add('fade-out');
                                         
-                                        // Ga naar volgende woord
-                                        currentWordIndex = (currentWordIndex + 1) % words.length;
-                                        
-                                        // Volgende woord tonen
-                                        words[currentWordIndex].classList.remove('is-hidden');
-                                        words[currentWordIndex].classList.add('is-visible');
-                                        
-                                        // Herhaal het proces
-                                        setTimeout(changeWord, animationDelay);
+                                        // After fade out, change text and fade in
+                                        setTimeout(function() {
+                                            currentIndex = (currentIndex + 1) % words.length;
+                                            changingWord.textContent = words[currentIndex];
+                                            changingWord.classList.remove('fade-out');
+                                        }, 1000); // Same as transition duration
                                     }
+                                    
+                                    // Change word every 3 seconds
+                                    setInterval(changeWord, 3000);
                                 });
                             </script>
+                        </div>
 
                             <div class="custom-btn-group">
                                 <a href="#section_2" class="btn custom-btn smoothscroll me-3">Mijn verhaal</a>
@@ -280,7 +220,9 @@ Anouk's ontwerp studio
                             <h3 class="mb-3">Over Anouk</h3>
                         
                             <p>Vind je het lastig om net dat beetje extra sfeer in huis te brengen? Twijfel je over kleuren of de juiste indeling van je ruimte? Ik help je graag verder.
-                                <p>Als interieurvormgever kijk ik niet alleen naar wat mooi is, maar ook naar wat werkt.</p><p>Ik combineer functionaliteit met styling, zodat elke ruimte klopt — van indeling tot kleurgebruik en afwerking.</p> 
+                                <p>Als interieurvormgever kijk ik niet alleen naar wat mooi is, maar ook naar wat werkt.</p><p>Door het combineren van functionaliteit met styling,
+                                    zorg ik ervoor dat elke ruimte klopt; van indeling tot kleurgebruik
+                                    en afwerking.</p> 
                                 
                         
                             <p>Mijn doel is dat "wow"-effect bij mijn ontwerpen.
@@ -399,8 +341,9 @@ Anouk's ontwerp studio
                                         </p>
                                     </div>
                                 </div>
-                        
-                                <img src="images/WorldMap.svg" class="img-fluid" alt="">
+                                
+                                <!-- Placeholder div om de ruimte van de verwijderde afbeelding te behouden -->
+                                <div class="img-fluid-placeholder" style="height: 250px; width: 100%;"></div>
                             </div>
                         </div>
 
@@ -408,6 +351,8 @@ Anouk's ontwerp studio
                 </div>
             </section>
         </main>
+
+        
 
         <footer class="site-footer">
             <div class="container">
