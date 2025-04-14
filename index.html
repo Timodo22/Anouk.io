@@ -309,15 +309,11 @@ Anouk's ontwerp studio
                     <div class="row">
 
                         <div class="col-lg-5 col-12">
-                            <div id="form-success-message" class="alert alert-success mb-4" style="display: none;">
-                                Bedankt! Uw bericht is succesvol verzonden.
-                            </div>
-                            
-                            <form id="contactForm" action="https://api.web3forms.com/submit" method="POST" class="custom-form contact-form" role="form">
+                            <form action="https://api.web3forms.com/submit" method="POST" class="custom-form contact-form" role="form">
                                 <h2 class="mb-4 pb-2">Contact</h2>
                                 
                                 <!-- Web3Forms Access Key -->
-                                <input type="hidden" name="access_key" value="7f0elcdd-091f-4a44-99a8-7a6335a80b08">
+                                <input type="hidden" name="access_key" value="7f0e1cdd-091f-4a44-99a8-7a6335a80b08">                                ">
                                 
                                 <!-- Optional: Honeypot field to prevent spam -->
                                 <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
@@ -343,64 +339,16 @@ Anouk's ontwerp studio
                                             <label for="message">Message</label>
                                         </div>
             
-                                        <button type="submit" class="form-control" id="submit-button">Verzend</button>
+                                        <!-- Optional: Success redirect URL -->
+                                        <input type="hidden" name="redirect" value="ontwerpstudioanouk.nl">
+                                        
+                                        <button type="submit" class="form-control">Verzend</button>
                                     </div>
                                 </div>
                             </form>
                         </div>
 
-                        <script>
-                            // JavaScript voor formulierverwerking
-                            const form = document.getElementById("contactForm");
-                            const successMessage = document.getElementById("form-success-message");
-                            const submitButton = document.getElementById("submit-button");
-                            
-                            form.addEventListener("submit", function(e) {
-                                e.preventDefault();
-                                
-                                // Tekst op knop veranderen tijdens verzenden
-                                submitButton.innerText = "Verzenden...";
-                                submitButton.disabled = true;
-                                
-                                // Formuliergegevens verzamelen
-                                const formData = new FormData(form);
-                                
-                                // Verzenden naar Web3Forms via fetch API
-                                fetch("https://api.web3forms.com/submit", {
-                                    method: "POST",
-                                    body: formData
-                                })
-                                .then(response => response.json())
-                                .then(data => {
-                                    // Controleer of het verzenden is gelukt
-                                    if (data.success) {
-                                        // Toon succesmelding
-                                        successMessage.style.display = "block";
-                                        
-                                        // Scroll naar de succesmelding
-                                        successMessage.scrollIntoView({ behavior: "smooth" });
-                                        
-                                        // Formulier resetten
-                                        form.reset();
-                                    } else {
-                                        // Foutmelding als er een probleem is
-                                        alert("Er is een fout opgetreden. Probeer het later opnieuw.");
-                                    }
-                                    
-                                    // Knop terugzetten naar oorspronkelijke staat
-                                    submitButton.innerText = "Verzend";
-                                    submitButton.disabled = false;
-                                })
-                                .catch(error => {
-                                    console.error("Error:", error);
-                                    alert("Er is een fout opgetreden. Probeer het later opnieuw.");
-                                    
-                                    // Knop terugzetten naar oorspronkelijke staat
-                                    submitButton.innerText = "Verzend";
-                                    submitButton.disabled = false;
-                                });
-                            });
-                        </script>
+                    
 
 
                         <div class="col-lg-6 col-12">
