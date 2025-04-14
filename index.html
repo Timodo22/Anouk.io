@@ -307,40 +307,103 @@ Anouk's ontwerp studio
             <section class="contact-section section-padding" id="section_5">
                 <div class="container">
                     <div class="row">
-
                         <div class="col-lg-5 col-12">
-                            <form action="#" method="post" class="custom-form contact-form" role="form">
+                            <!-- Succesmelding (verborgen bij laden) -->
+                            <div id="form-success-message" class="alert alert-success mb-4" style="display: none;">
+                                Bedankt! Uw bericht is succesvol verzonden.
+                            </div>
+                            
+                            <form id="contactForm" action="https://api.web3forms.com/submit" method="POST" class="custom-form contact-form" role="form">
                                 <h2 class="mb-4 pb-2">Contact</h2>
-
+                                
+                                <!-- Web3Forms Access Key -->
+                                <input type="hidden" name="access_key" value="7f0elcdd-091f-4a44-99a8-7a6335a80b08">
+                                
+                                <!-- Optional: Honeypot field to prevent spam -->
+                                <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+            
                                 <div class="row">
                                     <div class="col-lg-6 col-md-6 col-12">
                                         <div class="form-floating">
-                                            <input type="text" name="full-name" id="full-name" class="form-control" placeholder="Full Name" required="">
-                                            
-                                            <label for="floatingInput">Full Name</label>
+                                            <input type="text" name="name" id="full-name" class="form-control" placeholder="Full Name" required>
+                                            <label for="full-name">Full Name</label>
                                         </div>
                                     </div>
-
+            
                                     <div class="col-lg-6 col-md-6 col-12"> 
                                         <div class="form-floating">
-                                            <input type="email" name="email" id="email" pattern="[^ @]*@[^ @]*" class="form-control" placeholder="Email address" required="">
-                                            
-                                            <label for="floatingInput">Email address</label>
+                                            <input type="email" name="email" id="email" pattern="[^ @]*@[^ @]*" class="form-control" placeholder="Email address" required>
+                                            <label for="email">Email address</label>
                                         </div>
                                     </div>
-
+            
                                     <div class="col-lg-12 col-12">
                                         <div class="form-floating">
-                                            <textarea class="form-control" id="message" name="message" placeholder="Describe message here"></textarea>
-                                            
-                                            <label for="floatingTextarea">Message</label>
+                                            <textarea class="form-control" id="message" name="message" placeholder="Describe message here" required></textarea>
+                                            <label for="message">Message</label>
                                         </div>
-
-                                        <button type="submit" class="form-control">Verzend</button>
+            
+                                        <button type="submit" class="form-control" id="submit-button">Verzend</button>
                                     </div>
                                 </div>
                             </form>
                         </div>
+                    </div>
+                </div>
+            </section>
+            
+            <script>
+                // JavaScript voor formulierverwerking
+                const form = document.getElementById("contactForm");
+                const successMessage = document.getElementById("form-success-message");
+                const submitButton = document.getElementById("submit-button");
+                
+                form.addEventListener("submit", function(e) {
+                    e.preventDefault();
+                    
+                    // Tekst op knop veranderen tijdens verzenden
+                    submitButton.innerText = "Verzenden...";
+                    submitButton.disabled = true;
+                    
+                    // Formuliergegevens verzamelen
+                    const formData = new FormData(form);
+                    
+                    // Verzenden naar Web3Forms via fetch API
+                    fetch("https://api.web3forms.com/submit", {
+                        method: "POST",
+                        body: formData
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        // Controleer of het verzenden is gelukt
+                        if (data.success) {
+                            // Toon succesmelding
+                            successMessage.style.display = "block";
+                            
+                            // Scroll naar de succesmelding
+                            successMessage.scrollIntoView({ behavior: "smooth" });
+                            
+                            // Formulier resetten
+                            form.reset();
+                        } else {
+                            // Foutmelding als er een probleem is
+                            alert("Er is een fout opgetreden. Probeer het later opnieuw.");
+                        }
+                        
+                        // Knop terugzetten naar oorspronkelijke staat
+                        submitButton.innerText = "Verzend";
+                        submitButton.disabled = false;
+                    })
+                    .catch(error => {
+                        console.error("Error:", error);
+                        alert("Er is een fout opgetreden. Probeer het later opnieuw.");
+                        
+                        // Knop terugzetten naar oorspronkelijke staat
+                        submitButton.innerText = "Verzend";
+                        submitButton.disabled = false;
+                    });
+                });
+            </script>
 
                         <div class="col-lg-6 col-12">
                             <div class="contact-info mt-5">
