@@ -313,7 +313,7 @@ Anouk's ontwerp studio
                                 <h2 class="mb-4 pb-2">Contact</h2>
                                 
                                 <!-- Web3Forms Access Key -->
-                                <input type="hidden" name="access_key" value="7f0e1cdd-091f-4a44-99a8-7a6335a80b08">                                ">
+                                <input type="hidden" name="access_key" value="ffb59289-c3fc-494b-a279-de91ddd41322">                              
                                 
                                 <!-- Optional: Honeypot field to prevent spam -->
                                 <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
@@ -364,13 +364,25 @@ Anouk's ontwerp studio
                                         </p>
                         
                                         <p class="mb-0">
-                                            <a href="mailto:OntwerpstudioAnouk@gmail.com" class="contact-link" style="word-break: break-all;">
+                                            <a href="mailto:OntwerpstudioAnouk@gmail.com" class="contact-link">
                                                 OntwerpstudioAnouk@gmail.com
                                             </a>
                                         </p>
+                                        
                                     </div>
                                 </div>
-                                
+                                <style>
+                                    .contact-link {
+    word-break: break-all; /* standaard voor mobiel */
+}
+
+@media (min-width: 768px) {
+    .contact-link {
+        word-break: keep-all;
+    }
+}
+
+                                </style>
                                 <!-- Placeholder div om de ruimte van de verwijderde afbeelding te behouden -->
                                 <div class="img-fluid-placeholder" style="height: 250px; width: 100%;"></div>
                             </div>
