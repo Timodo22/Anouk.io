@@ -387,6 +387,95 @@ Omdat de klant mij bij het begin van hun verbouwing heeft betrokken, hebben we o
                                 </div>
                             </div>
                         </div>
+
+<div class="col-lg-6 col-md-6 col-12">
+    <div class="project-card">
+        <div id="project4Carousel" class="carousel slide project-carousel" data-bs-ride="false">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="images/Project4.1.png" class="d-block w-100" alt="Project 3 - Foto 1">
+                </div>
+                <div class="carousel-item">
+                    <img src="images/project4.2.png" class="d-block w-100" alt="Project 3 - Foto 2">
+                </div>
+                <div class="carousel-item">
+                    <img src="images/project4.3.png" class="d-block w-100" alt="Project 3 - Foto 3">
+                </div>
+                <div class="carousel-item">
+                    <img src="images/project4.4.png" class="d-block w-100" alt="Project 3 - Foto 4">
+                </div>
+                <div class="carousel-item">
+                    <img src="images/project4.5.png" class="d-block w-100" alt="Project 3 - Foto 5">
+                </div>
+                <div class="carousel-item">
+                    <img src="images/project4.6.png" class="d-block w-100" alt="Project 3 - Foto 6">
+                </div>
+                <div class="carousel-item">
+                    <img src="images/project4.7.png" class="d-block w-100" alt="Project 3 - Foto 7">
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#project4Carousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Vorige</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#project4Carousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Volgende</span>
+            </button>
+        </div>
+
+        <div class="card-body">
+            <div id="text-part1">
+                <h3 class="project-title">Vormgeving en afwerking te renoveren woning</h3>
+                <p class="project-description">
+                    Bij dit project werd mij gevraagd mee te denken gedurende de gehele verbouwing van hun nieuw gekochte woning.
+                </p>
+                <p class="project-description">
+                    Van indeling tot aankleding van het gehele huis. Van vloeren tot verlichting, keuken en badkamer.
+                </p>
+                <p>
+                    De klant wist heel goed wat ze mooi vonden en ik hielp ze met het maken van de juiste keuzes wat heeft geleid tot dit uiteindelijke mooie, frisse resultaat!
+                </p>
+            </div>
+
+            <div id="text-part2" style="display:none;">
+                <p>
+                    De bewoners wilden meer kleur toevoegen aan hun woning, die tien jaar geleden is gerenoveerd en gestyled. Elementen zoals de haard, de op maat gemaakte kasten en de raamdecoratie wilden zij behouden.
+                </p>
+                <p>
+                    Ik werd getriggerd door het kleurrijke schilderij in het eetgedeelte; dat diende als referentie voor het gekozen behang van het merk Élitis. Hierdoor ontstaat een verbondenheid tussen beide ruimtes. In de gehele woning is veel behang toegepast, wat bijdraagt aan warmte en een luxe uitstraling. Dat gecombineerd met kleur op de muur, maakt het af.
+                </p>
+                <p>
+                    Er is een lattenwand van licht eikenhout op maat geplaatst. Dit hout komt ook terug bij het bestaande wandmeubel waardoor de haard visueel wordt geïntegreerd met het interieur.
+                </p>
+                <p>
+                    Op de eerste verdieping zijn nieuwe overgordijnen gehangen, passend bij de bestaande dupli's. Het bed heeft een bestaande ombouw, waar nu rondom een behang is gebruikt, waardoor het bed niet meer zo afsteekt tegen de wand. Het behang heeft een rustgevende neutrale ondertoon, gevarieerd met opvallende, levendige, gedurfde kleuren.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    var carousel = document.getElementById('project4Carousel');
+    var textPart1 = document.getElementById('text-part1');
+    var textPart2 = document.getElementById('text-part2');
+
+    carousel.addEventListener('slid.bs.carousel', function (event) {
+        if (event.to === 0) { 
+            // Eerste foto -> toon tekst 1
+            textPart1.style.display = 'block';
+            textPart2.style.display = 'none';
+        } else {
+            // Vanaf tweede foto -> toon tekst 2
+            textPart1.style.display = 'none';
+            textPart2.style.display = 'block';
+        }
+    });
+});
+</script>
+
                         
                         <!-- PROJECT 4 -->
                     </div>
